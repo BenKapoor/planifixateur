@@ -11,7 +11,6 @@
 	<groupId>com.planifixateur</groupId>
 	<artifactId>projet-planifixateur</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>projet-planifixateur</name>
 	<description>Projet Spring Server</description>
 	<properties>
@@ -67,12 +66,6 @@
 		        <groupId>com.heroku.sdk</groupId>
 		        <artifactId>heroku-maven-plugin</artifactId>
 		        <version>3.0.3</version>
-		        <configuration>
-					<appName>planifixateur</appName>
-					<processTypes>
-				     		<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
-				  	</processTypes>
-				</configuration>
 		    </plugin>
 		</plugins>
 	</build>
