@@ -1,15 +1,11 @@
 package com.planifixateur.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import com.planifixateur.model.dto.TacheDto;
 
 public class Tache {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTache;
 
 	private String libelle;
