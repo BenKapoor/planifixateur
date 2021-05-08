@@ -35,7 +35,6 @@ public class FileDB {
 		FileDB fileDB = new FileDB();
 		fileDB.setName(fileDBDto.getName());
 		fileDB.setType(fileDBDto.getType());
-		fileDB.setType(fileDBDto.getType());
 		fileDB.setData(fileDBDto.getData());
 		return fileDB;
 	}
@@ -49,13 +48,6 @@ public class FileDB {
 		this.type = type;
 		this.data = data;
 		this.projet = projet;
-	}
-
-	public FileDB(String name, String type, byte[] data) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.data = data;
 	}
 
 	public String getId() {

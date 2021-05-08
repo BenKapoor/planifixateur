@@ -2,6 +2,8 @@ package com.planifixateur.model.dto;
 
 import java.util.Objects;
 
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.planifixateur.model.FileDB;
 
 public class FileDBDto {
@@ -13,6 +15,8 @@ public class FileDBDto {
 	private String type;
 
 	private byte[] data;
+
+	private String url;
 
 	private PlainProjetDto plainProjetDto;
 
@@ -49,6 +53,11 @@ public class FileDBDto {
 		this.data = data;
 		this.plainProjetDto = plainProjetDto;
 	}
+
+//	public static String url() {
+//		url
+//		return null;
+//	}
 
 	public String getId() {
 		return id;
@@ -88,6 +97,14 @@ public class FileDBDto {
 
 	public void setPlainProjetDto(PlainProjetDto plainProjetDto) {
 		this.plainProjetDto = plainProjetDto;
+	}
+
+	public String getUrl() {
+		return url = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(getId()).toUriString();
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

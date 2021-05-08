@@ -2,6 +2,7 @@ package com.planifixateur.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.planifixateur.message.ResponseFile;
 import com.planifixateur.message.ResponseMessage;
 import com.planifixateur.model.FileDB;
 import com.planifixateur.model.dto.FileDBDto;
@@ -47,17 +46,25 @@ public class FileController {
 		}
 	}
 
+//	@GetMapping("/files")
+//	public ResponseEntity<List<ResponseFile>> getListFiles() {
+//		List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
+//			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
+//					.path(dbFile.getId()).toUriString();
+//
+//			return new ResponseFile(dbFile.getId(), dbFile.getName(), fileDownloadUri, dbFile.getType(),
+//					dbFile.getData().length, dbFile.getProjet());
+//		}).collect(Collectors.toList());
+//
+//		return ResponseEntity.status(HttpStatus.OK).body(files);
+//	}
+
 	@GetMapping("/files")
-	public ResponseEntity<List<ResponseFile>> getListFiles() {
-		List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
-					.path(dbFile.getId()).toUriString();
+	public ResponseEntity<List<FileDBDto>> getListFiles() {
+		Stream<FileDB> files = storageService.getAllFiles();
+		List<FileDBDto> fileDBDto = files.map(FileDBDto::from).collect(Collectors.toList());
 
-			return new ResponseFile(dbFile.getId(), dbFile.getName(), fileDownloadUri, dbFile.getType(),
-					dbFile.getData().length, dbFile.getProjet());
-		}).collect(Collectors.toList());
-
-		return ResponseEntity.status(HttpStatus.OK).body(files);
+		return new ResponseEntity<>(fileDBDto, HttpStatus.OK);
 	}
 
 	@GetMapping("/files/{id}")

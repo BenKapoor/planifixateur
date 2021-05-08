@@ -16,7 +16,6 @@ public class LigneProjetDto {
 
 	private Date dateFin;
 
-//	private TacheDto tacheDto;
 	private String tache;
 
 	private PlainProjetDto plainProjetDto;
@@ -29,11 +28,6 @@ public class LigneProjetDto {
 		ligneProjetDto.setTache(ligneProjet.getTache());
 		ligneProjetDto.setDateDebut(ligneProjet.getDateDebut());
 		ligneProjetDto.setDateFin(ligneProjet.getDateFin());
-		// dans le cas ou la ligne n'est assignées à aucune tâche
-//		if (Objects.nonNull(ligneProjet.getTache())) {
-//			ligneProjetDto.setTacheDto(TacheDto.from(ligneProjet.getTache()));
-//		}
-		// dans le cas ou la ligne n'est assignées à aucun projet
 		if (Objects.nonNull(ligneProjet.getProjet())) {
 			ligneProjetDto.setPlainProjetDto(PlainProjetDto.from(ligneProjet.getProjet()));
 		}

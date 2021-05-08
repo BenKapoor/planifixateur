@@ -30,13 +30,19 @@ public class LigneProjet {
 
 	private Date dateFin;
 
-//	@ManyToOne
-//	@JoinColumn(name = "idTache")
-//	private Tache tache;
-
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Projet projet;
+
+	public static LigneProjet from(LigneProjetDto ligneProjetDto) {
+		LigneProjet ligneProjet = new LigneProjet();
+		ligneProjet.setLibelle(ligneProjetDto.getLibelle());
+		ligneProjet.setDescription(ligneProjetDto.getDescription());
+		ligneProjet.setTache(ligneProjetDto.getTache());
+		ligneProjet.setDateDebut(ligneProjetDto.getDateDebut());
+		ligneProjet.setDateFin(ligneProjetDto.getDateFin());
+		return ligneProjet;
+	}
 
 	public LigneProjet() {
 		super();
@@ -51,20 +57,6 @@ public class LigneProjet {
 		this.tache = tache;
 		this.projet = projet;
 	}
-
-	public static LigneProjet from(LigneProjetDto ligneProjetDto) {
-		LigneProjet ligneProjet = new LigneProjet();
-		ligneProjet.setLibelle(ligneProjetDto.getLibelle());
-		ligneProjet.setDescription(ligneProjetDto.getDescription());
-		ligneProjet.setTache(ligneProjetDto.getTache());
-		ligneProjet.setDateDebut(ligneProjetDto.getDateDebut());
-		ligneProjet.setDateFin(ligneProjetDto.getDateFin());
-		return ligneProjet;
-	}
-
-//	public void addTache(Tache _tache) {
-//		tache = _tache;
-//	}
 
 	public Long getId() {
 		return id;
