@@ -115,6 +115,7 @@ public class ProjetService implements IProjetService {
 		}
 
 		projet.addFile(fileDb);
+		fileDb.setProjet(projet);
 		return projet;
 	}
 
