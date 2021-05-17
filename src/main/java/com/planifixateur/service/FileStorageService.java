@@ -14,8 +14,12 @@ import com.planifixateur.model.FileDB;
 @Service
 public class FileStorageService {
 
-	@Autowired
 	private FileDBRepository fileDBRepository;
+
+	@Autowired
+	public FileStorageService(FileDBRepository fileDBRepository) {
+		this.fileDBRepository = fileDBRepository;
+	}
 
 	public FileDB store(MultipartFile file) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());

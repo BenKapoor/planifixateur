@@ -25,7 +25,7 @@ public class FileDBDto {
 		filesDBDto.setId(fileDb.getId());
 		filesDBDto.setName(fileDb.getName());
 		filesDBDto.setType(fileDb.getType());
-		filesDBDto.setData(fileDb.getData());
+
 		if (Objects.nonNull(fileDb.getProjet())) {
 			filesDBDto.setPlainProjetDto(PlainProjetDto.from(fileDb.getProjet()));
 		}

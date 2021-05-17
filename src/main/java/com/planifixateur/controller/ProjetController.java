@@ -3,6 +3,8 @@ package com.planifixateur.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,7 @@ public class ProjetController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/projets")
+	@Transactional
 	public ResponseEntity<ProjetDto> addProjet(@RequestBody final ProjetDto newProjetDto) {
 		Projet projet = projetService.saveProjet(Projet.from(newProjetDto));
 		return new ResponseEntity<>(ProjetDto.from(projet), HttpStatus.OK);

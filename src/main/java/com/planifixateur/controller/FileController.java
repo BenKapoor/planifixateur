@@ -26,8 +26,12 @@ import com.planifixateur.service.FileStorageService;
 @CrossOrigin
 public class FileController {
 
+	private final FileStorageService storageService;
+
 	@Autowired
-	private FileStorageService storageService;
+	public FileController(FileStorageService storageService) {
+		this.storageService = storageService;
+	}
 
 	@PostMapping("/upload")
 	public ResponseEntity<FileDBDto> uploadFile(@RequestParam("file") MultipartFile file) {
