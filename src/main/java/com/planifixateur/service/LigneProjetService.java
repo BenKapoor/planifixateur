@@ -57,7 +57,8 @@ public class LigneProjetService implements ILigneProjetService {
 	public LigneProjet deleteLigneProjet(Long id) {
 		// TODO Auto-generated method stub
 		LigneProjet ligneProjet = getLigneProjet(id);
-		ligneProjetRepository.delete(ligneProjet);
+//		ligneProjetRepository.delete(ligneProjet);
+		ligneProjetRepository.deleteById(id);
 		return ligneProjet;
 	}
 

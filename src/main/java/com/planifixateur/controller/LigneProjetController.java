@@ -60,7 +60,7 @@ public class LigneProjetController {
 	@PostMapping("/lignesprojet")
 	public ResponseEntity<LigneProjetDto> addLigneProjet(@RequestBody final LigneProjetDto newLigneProjetDto) {
 		LigneProjet ligne = ligneProjetService.saveLigneProjet(LigneProjet.from(newLigneProjetDto));
-		return new ResponseEntity<>(LigneProjetDto.from(ligne), HttpStatus.OK);
+		return new ResponseEntity<>(LigneProjetDto.from(ligne), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/lignesprojet")

@@ -25,7 +25,12 @@ public class Projet {
 
 	private String nom;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	/**
+	 * The orphanRemoval directive declares that associated entity instances are to
+	 * be removed when they are disassociated from the parent, or equivalently when
+	 * the parent is removed.
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "id_projet")
 	private Collection<LigneProjet> lignesProjet = new ArrayList<LigneProjet>();
 

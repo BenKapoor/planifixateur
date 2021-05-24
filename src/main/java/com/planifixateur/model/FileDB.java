@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.planifixateur.model.dto.FileDBDto;
@@ -26,7 +25,6 @@ public class FileDB {
 	private String type;
 
 	@Lob
-	@Type(type = "org.hibernate.type.ImageType")
 	private byte[] data;
 
 	@ManyToOne

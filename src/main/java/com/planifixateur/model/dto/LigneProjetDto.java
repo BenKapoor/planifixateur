@@ -20,6 +20,8 @@ public class LigneProjetDto {
 
 	private PlainProjetDto plainProjetDto;
 
+	private Long tempsTotal;
+
 	public static LigneProjetDto from(LigneProjet ligneProjet) {
 		LigneProjetDto ligneProjetDto = new LigneProjetDto();
 		ligneProjetDto.setId(ligneProjet.getId());
@@ -39,7 +41,7 @@ public class LigneProjetDto {
 	}
 
 	public LigneProjetDto(String libelle, String description, Date dateDebut, Date dateFin, String tache,
-			PlainProjetDto plainProjetDto) {
+			PlainProjetDto plainProjetDto, Long tempsTotal) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
@@ -47,10 +49,11 @@ public class LigneProjetDto {
 		this.dateFin = dateFin;
 		this.tache = tache;
 		this.plainProjetDto = plainProjetDto;
+		this.tempsTotal = tempsTotal;
 	}
 
 	public LigneProjetDto(Long id, String libelle, String description, Date dateDebut, Date dateFin, String tache,
-			PlainProjetDto plainProjetDto) {
+			PlainProjetDto plainProjetDto, Long tempsTotal) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -59,6 +62,7 @@ public class LigneProjetDto {
 		this.dateFin = dateFin;
 		this.tache = tache;
 		this.plainProjetDto = plainProjetDto;
+		this.tempsTotal = tempsTotal;
 	}
 
 	public Long getId() {
@@ -117,4 +121,11 @@ public class LigneProjetDto {
 		this.tache = tache;
 	}
 
+	public Long getTempsTotal() {
+		return tempsTotal = Math.abs((getDateFin().getTime() - getDateDebut().getTime()) / 1000);
+	}
+
+	public void setTempsTotal(Long tempsTotal) {
+		this.tempsTotal = tempsTotal;
+	}
 }
