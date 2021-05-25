@@ -15,24 +15,29 @@ public class ProjetDto {
 
 	private Collection<FileDBDto> filesDBDto = new ArrayList<FileDBDto>();
 
+	private Long tempsTotal;
+
 	public ProjetDto() {
 		super();
 	}
 
-	public ProjetDto(String nom, Collection<LigneProjetDto> lignesProjetDto, Collection<FileDBDto> filesDBDto) {
+	public ProjetDto(String nom, Collection<LigneProjetDto> lignesProjetDto, Collection<FileDBDto> filesDBDto,
+			Long tempsTotal) {
 		super();
 		this.nom = nom;
 		this.lignesProjetDto = lignesProjetDto;
 		this.filesDBDto = filesDBDto;
+		this.tempsTotal = tempsTotal;
 	}
 
-	public ProjetDto(Long id, String nom, Collection<LigneProjetDto> lignesProjetDto,
-			Collection<FileDBDto> filesDBDto) {
+	public ProjetDto(Long id, String nom, Collection<LigneProjetDto> lignesProjetDto, Collection<FileDBDto> filesDBDto,
+			Long tempsTotal) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.lignesProjetDto = lignesProjetDto;
 		this.filesDBDto = filesDBDto;
+		this.tempsTotal = tempsTotal;
 	}
 
 	public static ProjetDto from(Projet projet) {
@@ -75,6 +80,22 @@ public class ProjetDto {
 
 	public void setFilesDBDto(Collection<FileDBDto> filesDBDto) {
 		this.filesDBDto = filesDBDto;
+	}
+
+	public Long getTempsTotal() {
+		Long count = 0L;
+		Long t_total = 0L;
+		for (LigneProjetDto ligne : lignesProjetDto) {
+
+			count = Math.abs((ligne.getDateFin().getTime() - ligne.getDateDebut().getTime()) / 1000);
+			t_total += count;
+		}
+
+		return tempsTotal = t_total;
+	}
+
+	public void setTempsTotal(Long tempsTotal) {
+		this.tempsTotal = tempsTotal;
 	}
 
 }
